@@ -40,6 +40,42 @@ public class BookstoreTest {
             page.getByRole(AriaRole.BUTTON, new Page.GetByRoleOptions().setName("Apply Promo Code")).click();
             assertThat(page.getByText("The coupon code entered is")).isVisible();
             page.getByRole(AriaRole.BUTTON, new Page.GetByRoleOptions().setName("Proceed To Checkout")).first().click();
+            assertThat(page.getByRole(AriaRole.HEADING, new Page.GetByRoleOptions().setName("Create Account"))).isVisible();
+            page.getByRole(AriaRole.LINK, new Page.GetByRoleOptions().setName("Proceed As Guest")).click();
+            assertThat(page.getByRole(AriaRole.HEADING, new Page.GetByRoleOptions().setName("Contact Information"))).isVisible();
+            page.getByRole(AriaRole.TEXTBOX, new Page.GetByRoleOptions().setName("First Name (required)")).click();
+            page.getByRole(AriaRole.TEXTBOX, new Page.GetByRoleOptions().setName("First Name (required)")).fill("Rohan");
+            page.getByRole(AriaRole.TEXTBOX, new Page.GetByRoleOptions().setName("Last Name (required)")).click();
+            page.getByRole(AriaRole.TEXTBOX, new Page.GetByRoleOptions().setName("Last Name (required)")).fill("Sahoo");
+            page.getByRole(AriaRole.TEXTBOX, new Page.GetByRoleOptions().setName("Email address (required)")).click();
+            page.getByRole(AriaRole.TEXTBOX, new Page.GetByRoleOptions().setName("Email address (required)")).fill("rsahoo@depaul.edu");
+            page.getByRole(AriaRole.TEXTBOX, new Page.GetByRoleOptions().setName("Phone Number (required)")).click();
+            page.getByRole(AriaRole.TEXTBOX, new Page.GetByRoleOptions().setName("Phone Number (required)")).fill("6307858662");
+            assertThat(page.getByText("Order Subtotal $").nth(1)).isVisible();
+            assertThat(page.locator(".bned-order-summary-container.bned-step-summary-inner-container > .bned-order-summary-order-totals > .subtotals > div:nth-child(2)")).isVisible();
+            assertThat(page.getByText("Tax TBD").nth(1)).isVisible();
+            assertThat(page.getByText("Total $167.98 167.98 $").nth(1)).isVisible();
+            page.getByRole(AriaRole.BUTTON, new Page.GetByRoleOptions().setName("Continue")).click();
+            assertThat(page.getByRole(AriaRole.HEADING, new Page.GetByRoleOptions().setName("Contact Information"))).isVisible();
+            assertThat(page.getByText("Rohan Sahoo")).isVisible();
+            assertThat(page.getByText("rsahoo@depaul.edu")).isVisible();
+            assertThat(page.getByText("16307858662")).isVisible();
+            assertThat(page.getByText("Pickup Location DePaul")).isVisible();
+            assertThat(page.getByText("Pickup Person I'll pick them")).isVisible();
+            assertThat(page.getByText("Order Subtotal $").nth(1)).isVisible();
+            assertThat(page.locator(".bned-order-summary-container.bned-step-summary-inner-container > .bned-order-summary-order-totals > .subtotals > div:nth-child(2)")).isVisible();
+            assertThat(page.getByText("Tax TBD").nth(1)).isVisible();
+            assertThat(page.getByText("Total $167.98 167.98 $").nth(1)).isVisible();
+            assertThat(page.locator("div:nth-child(4) > .bned-order-summary-entries-wp > .bned-order-summary-entry > .bned-order-summary-entry-details-wp")).isVisible();
+            page.getByRole(AriaRole.BUTTON, new Page.GetByRoleOptions().setName("Continue")).click();
+            assertThat(page.getByText("Order Subtotal $").nth(1)).isVisible();
+            assertThat(page.locator(".bned-order-summary-container.bned-step-summary-inner-container > .bned-order-summary-order-totals > .subtotals > div:nth-child(2)")).isVisible();
+            assertThat(page.getByText("Tax $").nth(1)).isVisible();
+            assertThat(page.getByText("Total $185.20 185.2 $").nth(1)).isVisible();
+            assertThat(page.getByText("PICKUP DePaul University Loop Campus & SAIC JBL Quantum True Wireless Noise").nth(1)).isVisible();
+            page.getByRole(AriaRole.LINK, new Page.GetByRoleOptions().setName("Back to cart")).click();
+            page.getByRole(AriaRole.BUTTON, new Page.GetByRoleOptions().setName("Remove product JBL Quantum")).click();
+            assertThat(page.getByRole(AriaRole.HEADING, new Page.GetByRoleOptions().setName("Your cart is empty"))).isVisible();
         }
     }
 }
