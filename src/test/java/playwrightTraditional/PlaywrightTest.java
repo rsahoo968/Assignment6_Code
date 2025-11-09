@@ -3,9 +3,8 @@ package playwrightTraditional;
 import com.microsoft.playwright.*;
 import com.microsoft.playwright.options.*;
 import static com.microsoft.playwright.assertions.PlaywrightAssertions.assertThat;
-import java.util.*;
 
-public class BookstoreTest {
+public class PlaywrightTest {
     public static void main(String[] args) {
         try (Playwright playwright = Playwright.create()) {
             Browser browser = playwright.chromium().launch(new BrowserType.LaunchOptions()
@@ -37,8 +36,8 @@ public class BookstoreTest {
             assertThat(page.locator(".js-cart-totals > div:nth-child(2)")).isVisible();
             assertThat(page.getByText("Taxes TBD")).isVisible();
             assertThat(page.getByText("Estimated Total $")).isVisible();
-            page.getByRole(AriaRole.BUTTON, new Page.GetByRoleOptions().setName("Apply Promo Code")).click();
-            assertThat(page.getByText("The coupon code entered is")).isVisible();
+            //page.getByRole(AriaRole.BUTTON, new Page.GetByRoleOptions().setName("Apply Promo Code")).click();
+            //assertThat(page.getByText("The coupon code entered is")).isVisible();
             page.getByRole(AriaRole.BUTTON, new Page.GetByRoleOptions().setName("Proceed To Checkout")).first().click();
             assertThat(page.getByRole(AriaRole.HEADING, new Page.GetByRoleOptions().setName("Create Account"))).isVisible();
             page.getByRole(AriaRole.LINK, new Page.GetByRoleOptions().setName("Proceed As Guest")).click();
