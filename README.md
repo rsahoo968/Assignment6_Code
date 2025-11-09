@@ -20,8 +20,7 @@ The provided GitHub Action workflow (`.github/workflows/playwright.yml`) automat
 4. Builds the Maven project.
 5. Runs all JUnit and Playwright tests.
 
-All tests must compile and pass.  
-If the code fails to compile or any test fails, the submission will receive an instant zero.
+
 
 ---
 
