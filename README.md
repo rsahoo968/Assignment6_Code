@@ -1,4 +1,4 @@
-## Assignment 6 - UI Testing 
+## UI Testing 
 
 ## GitHub Repository
 
